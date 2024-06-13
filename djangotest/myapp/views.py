@@ -8,5 +8,5 @@ class HomeView(View):
     
     
 class AboutView(View):
-    def get(self,request):
+    def get(self,request,username):
         return render(request, 'about.html')    

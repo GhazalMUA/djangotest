@@ -6,3 +6,7 @@ class TestUrls(TestCase):
     def test_home(self):
         url=reverse('myapp:home')
         self.assertEqual(resolve(url).func.view_class , HomeView)
+        
+    def test_about(self):
+        url=reverse('myapp:about' , args=('ghazalmua',))
+        self.assertEqual(resolve(url).func.view_class ,AboutView)    
