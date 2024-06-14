@@ -1,0 +1,9 @@
+<h1>writers informations</h1>
+{%for writer in writers%}
+ <p>
+    {{ writer.first_name }}
+    {{ writer.last_name }}
+    {{ writer.email }}
+    {{ writer.country }}
+ </p>
+{%endfor%}
