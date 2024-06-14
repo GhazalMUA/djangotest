@@ -27,7 +27,7 @@ class UserRegisterView(View):
     
     
     def get(self,request):
-        context= {'form':self.form_class}
+        context= {'form':self.form_class()}
         return render(request, self.template_name , context)
     
     
@@ -36,6 +36,6 @@ class UserRegisterView(View):
         if form.is_valid():
             cd = form.cleaned_data
             User.objects.create_user(username=cd['username'] ,email=cd['email'] , password=cd['password1'])
-            messages.success(request,'you registered succcesfully','success')
+            messages.success(request,'you have registered succcesfully','success')
             return redirect('myapp:home')
         return render(request, self.template_name ,{'form':form})
