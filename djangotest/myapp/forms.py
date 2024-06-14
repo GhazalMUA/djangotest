@@ -17,11 +17,11 @@ class UserRegistrationForm(forms.Form):
             raise ValidationError('this email address already exists')
         return email
     
-    def clean(self):
-        cd= super().clean()
-        p1=cd.get['password1']
-        p2=cd.get['password2']
-        if p1 and p2 and p1!=p2:
-            raise ValidationError('passwords didn`t match')
+    # def clean(self):
+    #     cd= super().clean()
+    #     p1=cd.get['password1']
+    #     p2=cd.get['password2']
+    #     if p1 and p2 and p1!=p2:
+    #         raise ValidationError('passwords didn`t match')
         
  
