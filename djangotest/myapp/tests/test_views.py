@@ -4,7 +4,9 @@ from django.urls import reverse   #reverse bhsh url ro tahvil midi va path kamel
 from django.contrib.auth.models import User
 from myapp.forms import UserRegistrationForm
 from myapp.models import Writer
-
+from myapp.views import HomeView
+from django.test import RequestFactory
+from django.contrib.auth.models import AnonymousUser
 class TestUserRegisterView(TestCase):
     def setUp(self):
         '''
@@ -31,7 +33,7 @@ class TestUserRegisterView(TestCase):
     def test_user_register_valid_POST(self):
         '''
             check mikonim bbinim ke vaghti method post hastesh:
-            * aya user tashkil mishe ya na az tarighe status code mifahmim 302 yani create user
+            * aya user tashkil mishe ya na az tarighe status code mifahmim 302 yani redirect
             * be hamoon masiri k moshakhas kardim redirect mishe ya na bad az tashkile user.
             (redirectesh dorost kar mikone y na)
             
@@ -81,7 +83,7 @@ class TestShowWriter(TestCase):
     def setUp(self):
         self.client=Client()
         User.objects.create_user(username='ghazal' , email='ghazal@hafezi.com' , password='ghazal')
-        self.client.login(username='ghazal' , email='ghazal@hafezi.com' , password='ghazal')
+        self.client.login(username='ghazal' , password='ghazal')   # No need to pass email for login
 
     def test_login_check(self):
         '''
@@ -94,3 +96,13 @@ class TestShowWriter(TestCase):
         self.assertTemplateUsed(response , 'show_writers.html')
     
     
+    
+class TestHomeView(TestCase):
+    def setUp(self):
+        self.request=RequestFactory()
+    
+    def test_authenticated_users(self):
+        pass
+    
+    def test_non_authenticated_users(self):
+        pass    

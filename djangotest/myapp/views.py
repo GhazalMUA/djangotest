@@ -12,7 +12,7 @@ from .models import Writer
 class HomeView(View):
     def get(self,request):
         if request.user.is_authenticated:
-            return render (request , 'show_writers.html')
+            return redirect ('show_writers.html')
         return render(request,'home.html')
     
     
