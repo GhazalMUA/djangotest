@@ -48,7 +48,7 @@ class TestRegistratonForm(TestCase):
                                         'password1':'nahid' , 
                                         'password2':'nahid'})
         self.assertEqual(len(form.errors), 1)
-        self.assertTrue(form.has_error('emial'))
+        self.assertTrue(form.has_error('email'))
     
     
     
