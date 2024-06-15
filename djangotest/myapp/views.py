@@ -8,11 +8,12 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Writer
-# Create your views here.
 
 class HomeView(View):
     def get(self,request):
-        return render(request, 'home.html')
+        if request.user.is_authenticated:
+            return render (request , 'show_writers.html')
+        return render(request,'home.html')
     
     
 class AboutView(View):
